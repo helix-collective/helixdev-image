@@ -1,0 +1,16 @@
+name: 'Helixdev'
+description: 'Run a action in the helixdev environment'
+inputs:
+  cwd:
+    description: 'Where the command is to be run'
+    required: true
+    default: .
+  cmd:
+    description: 'The command to be run'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.cwd }}
+    - ${{ inputs.cmd }}
