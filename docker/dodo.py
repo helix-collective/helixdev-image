@@ -8,16 +8,13 @@ ROOT = Path('../..')
 helixdevimagebuilt = MarkerFile(HERE/'build/.helixdevimagebuilt')
 helixdevimagepushed = MarkerFile(HERE/'build/.helixdevimagepushed')
 
-jdktarfile = HOME/'archive/jdk-8u152-linux-x64.tar.gz'
-
 def task_docker_build_helixdev_image():
     context = DockerContext()
-    context.file( jdktarfile, jdktarfile.name)
     context.file( HERE/'install.helixdev.sh', 'install.sh')
     image = DockerImage( 'helixdev', context)
     image.cmd( 'FROM ubuntu:18.04' )
     image.cmd( 'MAINTAINER Helix Team <support@helixta.com.au>' )
-    image.cmd( 'COPY install.sh {} /tmp/'.format(jdktarfile.name) )
+    image.cmd( 'COPY install.sh /tmp/')
     image.cmd( 'RUN sh -x /tmp/install.sh && rm -r /tmp/*' )
 
     return {

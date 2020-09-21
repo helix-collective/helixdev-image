@@ -10,7 +10,7 @@ apt-get update
 apt-get install -y curl apt-transport-https gnupg2
 
 # Install yarn, node, etc
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt-get update && apt-get -y install nodejs yarn
@@ -36,7 +36,8 @@ apt-get install -y \
   python3-pip \
   python3-gdbm \
   awscli \
-  nginx
+  nginx \
+  openjdk-8-jdk
 
 # Install some python3 packages via pip
 pip3 install doit pystache
@@ -54,15 +55,15 @@ rm /tmp/*.deb
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 # Unpack java 8, with specified minor version
-MINOR=152
-mkdir -p /opt/jdk
-cd /opt/jdk
-tar -zxf /tmp/jdk-8u$MINOR-linux-x64.tar.gz -C /opt/jdk
-update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_$MINOR/bin/java 100
-update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_$MINOR/bin/javac 100
-update-alternatives --install /usr/bin/jstack jstack /opt/jdk/jdk1.8.0_$MINOR/bin/jstack 100
-update-alternatives --install /usr/bin/javadoc javadoc /opt/jdk/jdk1.8.0_$MINOR/bin/javadoc 100
-update-alternatives --install /usr/bin/jar jar /opt/jdk/jdk1.8.0_$MINOR/bin/jar 100
+#MINOR=152
+#mkdir -p /opt/jdk
+#cd /opt/jdk
+#tar -zxf /tmp/jdk-8u$MINOR-linux-x64.tar.gz -C /opt/jdk
+#update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_$MINOR/bin/java 100
+#update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_$MINOR/bin/javac 100
+#update-alternatives --install /usr/bin/jstack jstack /opt/jdk/jdk1.8.0_$MINOR/bin/jstack 100
+#update-alternatives --install /usr/bin/javadoc javadoc /opt/jdk/jdk1.8.0_$MINOR/bin/javadoc 100
+#update-alternatives --install /usr/bin/jar jar /opt/jdk/jdk1.8.0_$MINOR/bin/jar 100
 
 # Install bazel from a binary release
 VERSION=2.1.1
