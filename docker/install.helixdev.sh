@@ -54,17 +54,6 @@ dpkg -i docker-ce_19.03.8~3-0~ubuntu-bionic_amd64.deb
 rm /tmp/*.deb
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-# Unpack java 8, with specified minor version
-#MINOR=152
-#mkdir -p /opt/jdk
-#cd /opt/jdk
-#tar -zxf /tmp/jdk-8u$MINOR-linux-x64.tar.gz -C /opt/jdk
-#update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_$MINOR/bin/java 100
-#update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_$MINOR/bin/javac 100
-#update-alternatives --install /usr/bin/jstack jstack /opt/jdk/jdk1.8.0_$MINOR/bin/jstack 100
-#update-alternatives --install /usr/bin/javadoc javadoc /opt/jdk/jdk1.8.0_$MINOR/bin/javadoc 100
-#update-alternatives --install /usr/bin/jar jar /opt/jdk/jdk1.8.0_$MINOR/bin/jar 100
-
 # Install bazel from a binary release
 VERSION=2.1.1
 INSTALLER=bazel-$VERSION-installer-linux-x86_64.sh
