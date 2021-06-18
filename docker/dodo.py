@@ -10,12 +10,15 @@ helixdevimagepushed = MarkerFile(HERE/'build/.helixdevimagepushed')
 
 def task_docker_build_helixdev_image():
     context = DockerContext()
-    context.file( HERE/'install.helixdev.sh', 'install.sh')
+    context.file( HERE/'01-install-base.sh', '01-install-base.sh')
+    context.file( HERE/'02-install-tools.sh', '02-install-tools.sh')
     image = DockerImage( 'helixdev', context)
     image.cmd( 'FROM ubuntu:18.04' )
     image.cmd( 'MAINTAINER Helix Team <support@helixta.com.au>' )
-    image.cmd( 'COPY install.sh /tmp/')
-    image.cmd( 'RUN sh -x /tmp/install.sh && rm -r /tmp/*' )
+    image.cmd( 'COPY 01-install-base.sh /tmp/')
+    image.cmd( 'RUN bash -x /tmp/01-install-base.sh && rm -r /tmp/*' )
+    image.cmd( 'COPY 02-install-tools.sh /tmp/')
+    image.cmd( 'RUN bash -x /tmp/02-install-tools.sh && rm -r /tmp/*' )
 
     return {
         'doc' : 'build the helix docker image containing development tools',
