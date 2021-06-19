@@ -38,7 +38,7 @@ def task_docker_build_helixdev_image():
     }
 
 def task_docker_push_helixdev_image():
-    tag = str(date.today()) + "-devtest-2"
+    tag = str(date.today()) + "-devtest-3"
     return {
         'doc' : 'push the helix dev docker image containing development tools',
         'actions': [
