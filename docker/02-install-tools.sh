@@ -3,6 +3,12 @@ set -ex
 
 export DEBIAN_FRONTEND=noninteractive
 
+# Install deno:
+curl -fsSL https://deno.land/x/install/install.sh | sh
+
+# Install dnit:
+deno install --allow-read --allow-write --allow-run --unstable -f --name dnit https://deno.land/x/dnit@dnit-v1.12.3/main.ts
+
 # Install yarn, node, etc
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
