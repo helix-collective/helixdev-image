@@ -9,6 +9,7 @@ export DEBIAN_FRONTEND=noninteractive
 # https://deno.land/x/dvm
 curl -fsSL https://deno.land/x/dvm/install.sh | sh
 
+# Install a version of deno:
 dvm install 1.10.3
 
 # Install dnit:
