@@ -48,6 +48,7 @@ dpkg -i docker-ce-cli_19.03.8~3-0~ubuntu-bionic_amd64.deb
 dpkg -i docker-ce_19.03.8~3-0~ubuntu-bionic_amd64.deb
 rm /tmp/*.deb
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 # symlink nginx so that NginxRunnerTest can work correctly
 ln -s /usr/sbin/nginx /usr/local/bin/nginx 
