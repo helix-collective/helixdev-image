@@ -3,8 +3,11 @@ set -ex
 
 export DEBIAN_FRONTEND=noninteractive
 
-# Install deno:
-curl -fsSL https://deno.land/x/install/install.sh | sh
+# Install deno via DVM:
+# https://deno.land/x/dvm
+curl -fsSL https://deno.land/x/dvm/install.sh | sh
+
+dvm install 1.10.3
 
 # Install dnit:
 deno install --allow-read --allow-write --allow-run --unstable -f --name dnit https://deno.land/x/dnit@dnit-v1.12.3/main.ts

@@ -18,6 +18,10 @@ def task_docker_build_helixdev_image():
     image.cmd( 'COPY 01-install-base.sh /tmp/')
     image.cmd( 'RUN bash -x /tmp/01-install-base.sh && rm -r /tmp/*' )
     image.cmd( 'ENV SDKMAN_DIR=/usr/local/sdkman')
+    image.cmd( 'ENV DENO_INSTALL=/usr/local')
+    image.cmd( 'ENV DVM_DIR=/usr/local')
+    image.cmd( 'ENV DENO_DIR=/usr/local')
+    image.cmd( 'ENV DENO_INSTALL_ROOT=/usr/local')
     image.cmd( 'COPY 02-install-tools.sh /tmp/')
     image.cmd( 'RUN bash -x /tmp/02-install-tools.sh && rm -r /tmp/*' )
 
