@@ -19,12 +19,13 @@ ln -s /usr/local/bin/bazelisk /usr/local/bin/bazel
 bazel version
 
 # Install sdkman - See https://sdkman.io/install
-# Installing without Modifying Shell Config
-# Users will need to source ~/.sdkman/bin/sdkman-init.sh to get it
-curl -s "https://get.sdkman.io?rcupdate=false" | bash
+# The Dockerfile has set SDKMAN_DIR so that it is not in a "HOME" dir (neither root or /github/home etc)
+# So that it works during this docker image build and github action CI usage
+echo "Using SDKMAN_DIR=${SDKMAN_DIR}"
+curl -s "https://get.sdkman.io" | bash
 
 # Download a java version to cache in the docker image:
 set +x
-source ~/.sdkman/bin/sdkman-init.sh
+source ${SDKMAN_DIR}/bin/sdkman-init.sh
 sdk install java 11.0.11.hs-adpt
 set -x
