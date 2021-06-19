@@ -38,3 +38,8 @@ set +x
 source ${SDKMAN_DIR}/bin/sdkman-init.sh
 sdk install java 11.0.11.hs-adpt
 set -x
+
+
+# port back:
+curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
