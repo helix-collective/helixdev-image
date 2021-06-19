@@ -17,6 +17,7 @@ def task_docker_build_helixdev_image():
     image.cmd( 'MAINTAINER Helix Team <support@helixta.com.au>' )
     image.cmd( 'COPY 01-install-base.sh /tmp/')
     image.cmd( 'RUN bash -x /tmp/01-install-base.sh && rm -r /tmp/*' )
+    image.cmd( 'ENV SDKMAN_DIR=/usr/local/sdkman')
     image.cmd( 'COPY 02-install-tools.sh /tmp/')
     image.cmd( 'RUN bash -x /tmp/02-install-tools.sh && rm -r /tmp/*' )
 
