@@ -1,5 +1,7 @@
 #!/bin/bash
-set -ex
+set -euo pipefail
+IFS=$'\n\t'
+set -x
 
 export DEBIAN_FRONTEND=noninteractive
 
