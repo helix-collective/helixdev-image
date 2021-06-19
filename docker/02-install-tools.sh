@@ -3,6 +3,15 @@ set -ex
 
 export DEBIAN_FRONTEND=noninteractive
 
+# Install deno via DVM:
+# https://deno.land/x/dvm
+curl -fsSL https://deno.land/x/dvm/install.sh | sh
+
+dvm install 1.10.3
+
+# Install dnit:
+deno install --allow-read --allow-write --allow-run --unstable -f --name dnit https://deno.land/x/dnit@dnit-v1.12.3/main.ts
+
 # Install yarn, node, etc
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
