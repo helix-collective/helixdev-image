@@ -32,8 +32,7 @@ apt-get install -y \
   python3-pip \
   python3-gdbm \
   awscli \
-  nginx \
-  openjdk-11-jdk
+  nginx
 
 # Install some python3 packages via pip
 pip3 install doit pystache
