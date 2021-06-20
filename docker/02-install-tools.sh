@@ -32,6 +32,8 @@ curl -s "https://get.sdkman.io" | bash
 
 # Download a java version to cache in the docker image:
 set +x
+set +u
 source ${SDKMAN_DIR}/bin/sdkman-init.sh
 sdk install java 11.0.11.hs-adpt
+set -u
 set -x
