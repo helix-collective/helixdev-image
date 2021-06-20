@@ -13,6 +13,7 @@ curl -fsSL https://deno.land/x/dvm/install.sh | sh
 dvm install 1.10.3
 
 # Install dnit:
+echo "Using deno version $(deno --version)"
 deno install --allow-read --allow-write --allow-run --unstable -f --name dnit https://deno.land/x/dnit@dnit-v1.12.3/main.ts
 
 # Install bazelisk
@@ -21,7 +22,7 @@ chmod +x bazelisk-linux-amd64
 mv bazelisk-linux-amd64 /usr/local/bin/bazelisk
 ln -s /usr/local/bin/bazelisk /usr/local/bin/bazel
 
-# Download a version to cache in the docker image:
+# Download a recent version (for default use and to cache in the docker image)
 bazel version
 
 # Install sdkman - See https://sdkman.io/install
@@ -30,7 +31,7 @@ bazel version
 echo "Using SDKMAN_DIR=${SDKMAN_DIR}"
 curl -s "https://get.sdkman.io" | bash
 
-# Download a java version to cache in the docker image:
+# Download a java version (for default use and to cache in the docker image)
 set +x
 set +u
 source ${SDKMAN_DIR}/bin/sdkman-init.sh
