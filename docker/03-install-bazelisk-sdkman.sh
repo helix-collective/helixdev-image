@@ -3,19 +3,6 @@ set -euo pipefail
 IFS=$'\n\t'
 set -x
 
-export DEBIAN_FRONTEND=noninteractive
-
-# Install deno via DVM:
-# https://deno.land/x/dvm
-curl -fsSL https://deno.land/x/dvm/install.sh | sh
-
-# Install a version of deno:
-dvm install 1.10.3
-
-# Install dnit:
-echo "Using deno version $(deno --version)"
-deno install --allow-read --allow-write --allow-run --unstable -f --name dnit https://deno.land/x/dnit@dnit-v1.12.3/main.ts
-
 # Install bazelisk
 wget -q https://github.com/bazelbuild/bazelisk/releases/download/v1.9.0/bazelisk-linux-amd64
 chmod +x bazelisk-linux-amd64
@@ -38,3 +25,6 @@ source ${SDKMAN_DIR}/bin/sdkman-init.sh
 sdk install java 11.0.11.hs-adpt
 set -u
 set -x
+
+# Note: Projects need to run the following in order to source the SDKMAN environment:
+# source ${SDKMAN_DIR}/bin/sdkman-init.sh
