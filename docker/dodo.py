@@ -32,7 +32,7 @@ def task_docker_build_helixdev_image():
             image.action(),
             helixdevimagebuilt.action()
         ],
-        'file_dep': context.file_dep(),
+        'file_dep': context.file_dep() + [HERE/"dodo.py"],
         'targets': [helixdevimagebuilt.path],
         'verbosity' : 2,
         'clean' : True
