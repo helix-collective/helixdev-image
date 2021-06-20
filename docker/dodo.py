@@ -17,11 +17,12 @@ def task_docker_build_helixdev_image():
     image.cmd( 'MAINTAINER Helix Team <support@helixta.com.au>' )
     image.cmd( 'COPY 01-install-base.sh /tmp/')
     image.cmd( 'RUN bash -x /tmp/01-install-base.sh && rm -r /tmp/*' )
-    image.cmd( 'ENV SDKMAN_DIR=/usr/local/sdkman')
-    image.cmd( 'ENV DENO_INSTALL=/usr/local')
-    image.cmd( 'ENV DVM_DIR=/usr/local')
-    image.cmd( 'ENV DENO_DIR=/usr/local')
-    image.cmd( 'ENV DENO_INSTALL_ROOT=/usr/local')
+    image.cmd( 'ENV SDKMAN_DIR=/usr/local/sdkman')  # sdkman
+    image.cmd( 'ENV DENO_INSTALL=/usr/local') # to install deno binary
+    image.cmd( 'ENV DVM_DIR=/usr/local')    # for deno version manager
+    image.cmd( 'ENV DENO_INSTALL_ROOT=/usr/local')  # dest for 'deno install ...'
+    image.cmd( 'ENV XDG_CONFIG_HOME=/usr/local')    # node version manager
+    image.cmd( 'ENV NVM_DIR=${XDG_CONFIG_HOME}/nvm')  # node version manager
     image.cmd( 'COPY 02-install-tools.sh /tmp/')
     image.cmd( 'RUN bash -x /tmp/02-install-tools.sh && rm -r /tmp/*' )
 
