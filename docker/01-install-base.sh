@@ -39,6 +39,12 @@ apt-get install -y \
 # Install some python3 packages via pip
 pip3 install doit pystache
 
+# Install yarn, node, etc
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt-get update && apt-get -y install nodejs yarn
+
 # Install docker and docker-compose
 cd /tmp
 apt-get install -y iptables libdevmapper1.02.1
