@@ -21,3 +21,4 @@ npm install -g yarn
 
 # Note: Projects need to run the following in order to source the NVM environment:
 # source $NVM_DIR/nvm.sh
+#
