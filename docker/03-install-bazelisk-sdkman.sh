@@ -18,6 +18,19 @@ bazel version
 echo "Using SDKMAN_DIR=${SDKMAN_DIR}"
 curl -s "https://get.sdkman.io" | bash
 
+cat << EOF > ${SDKMAN_DIR}/etc/config
+# https://sdkman.io/usage#config
+
+# make sdkman non-interactive, preferred for CI environments
+sdkman_auto_answer=true
+
+# perform automatic selfupdates?
+sdkman_auto_selfupdate=false
+
+# enable colour mode?
+sdkman_colour_enable=false
+EOF
+
 # Download a java version (for default use and to cache in the docker image)
 set +x
 set +u
