@@ -22,6 +22,7 @@ cat << EOF > ${SDKMAN_DIR}/etc/config
 # https://sdkman.io/usage#config
 
 # make sdkman non-interactive, preferred for CI environments
+# (buggy: Replace after sdkman > 5.11.7 is released)
 sdkman_auto_answer=true
 
 # perform automatic selfupdates?
