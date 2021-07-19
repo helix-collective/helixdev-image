@@ -18,24 +18,27 @@ bazel version
 echo "Using SDKMAN_DIR=${SDKMAN_DIR}"
 curl -s "https://get.sdkman.io" | bash
 
+# sdkman_auto_answer - yes so that it doesn't put up interactive prompts in CI.
+# sdkman_selfupdate_enable - self updating not desirable/necessary (unless old versions start breaking?)
+
 cat << EOF > ${SDKMAN_DIR}/etc/config
 # https://sdkman.io/usage#config
 
 # make sdkman non-interactive, preferred for CI environments
-# (buggy: Replace after sdkman > 5.12.1 is released)
 sdkman_auto_answer=true
 
 # perform automatic selfupdates?
-sdkman_auto_selfupdate=false
+sdkman_selfupdate_enable=false
 
 # enable colour mode?
 sdkman_colour_enable=false
 EOF
 
-# Download a java version (for default use and to cache in the docker image)
+# Download java versions to make available in the image
 set +x
 set +u
 source ${SDKMAN_DIR}/bin/sdkman-init.sh
+sdk install java 8.0.292.hs-adpt
 sdk install java 11.0.11.hs-adpt
 set -u
 set -x
