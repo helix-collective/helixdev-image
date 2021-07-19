@@ -34,11 +34,12 @@ sdkman_selfupdate_enable=false
 sdkman_colour_enable=false
 EOF
 
-# Download a java version (for default use and to cache in the docker image)
+# Download java versions to make available in the image
 set +x
 set +u
 source ${SDKMAN_DIR}/bin/sdkman-init.sh
 sdk install java 11.0.11.hs-adpt
+sdk install java 8.0.292.hs-adpt
 set -u
 set -x
 
