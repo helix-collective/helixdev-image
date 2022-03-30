@@ -10,8 +10,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | PROFI
 set +x
 set +u
 source $NVM_DIR/nvm.sh
-nvm install --lts
-nvm use --lts
+nvm install 14.18.2
+nvm use 14.18.2
 set -u
 set -x
 
