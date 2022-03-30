@@ -1,3 +1,3 @@
-FROM helixta/helixdev:2021-11-09
+FROM helixta/helixdev:2022-03-30
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
